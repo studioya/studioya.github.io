@@ -4,7 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yarden Amir — Designer · Making &amp; Fabrication Instructor · Craft Researcher</title>
-<meta name="description" content="Yarden Amir is looking for the next thing. Draw on the laser bed, then press Cut.">
+<meta name="description" content="Yarden Amir is on a job hunt. Draw on the laser bed, then press Cut.">
+<meta property="og:title" content="Yarden Amir is on a job hunt">
+<meta property="og:description" content="Cut something with a laser on his resume.">
+<meta property="og:url" content="https://flyer.yardenamir.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
@@ -34,6 +37,7 @@ button:disabled{opacity:.45;cursor:default}
 <button id="clear" style="min-height: 52px; border: 1px solid #262422; border-radius: 0; background: transparent; color: #262422; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 16px; letter-spacing: 0.08em; cursor: pointer">CLEAR</button>
 </div>
 <div id="hint" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52"></div>
+<div id="shareBox" style="display: none; flex-direction: column; gap: 8px; margin-top: 8px"><button id="shareBtn" style="min-height: 52px; border: 0; border-radius: 0; background: #B4593A; color: #FFFFFF; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 15px; letter-spacing: 0.08em; cursor: pointer">SHARE YOUR CUT TO YOUR STORY</button><div id="shareMsg" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; line-height: 1.5; color: #5F5A52"></div></div>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 14px">
@@ -92,6 +96,7 @@ button:disabled{opacity:.45;cursor:default}
 </div>
 </div>
 
+<div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-start"><button id="shareLinkBtn" style="border: 0; background: none; padding: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; color: #7A5A30; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Share this flyer ↗</button><span id="linkMsg" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52"></span></div>
 <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 24px; border-top: 1px solid rgba(38, 36, 34, 0.18)"><svg width="32.2" height="32.2" viewBox="0 0 32.20 32.20" role="img" aria-label="Yarden Amir test-plate mark" style="display: block; color: #262422"><defs><pattern id="fp0" patternUnits="userSpaceOnUse" width="0.598" height="0.598" patternTransform="rotate(45)"><rect width="0.598" height="0.322" fill="currentColor"></rect></pattern><pattern id="fp1" patternUnits="userSpaceOnUse" width="0.851" height="0.851" patternTransform="rotate(45)"><rect width="0.851" height="0.322" fill="currentColor"></rect></pattern><pattern id="fp2" patternUnits="userSpaceOnUse" width="1.196" height="1.196" patternTransform="rotate(45)"><rect width="1.196" height="0.322" fill="currentColor"></rect></pattern></defs><circle cx="4.60" cy="4.60" r="4.60" fill="url(#fp0)" opacity="0.55"></circle><circle cx="4.60" cy="4.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="16.10" cy="4.60" r="4.60" fill="url(#fp1)" opacity="0.55"></circle><circle cx="16.10" cy="4.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="27.60" cy="4.60" r="4.60" fill="url(#fp2)" opacity="0.55"></circle><circle cx="27.60" cy="4.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="4.60" cy="16.10" r="4.60" fill="url(#fp0)" opacity="0.8"></circle><circle cx="4.60" cy="16.10" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="16.10" cy="16.10" r="4.60" fill="url(#fp1)" opacity="0.8"></circle><circle cx="16.10" cy="16.10" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="27.60" cy="16.10" r="4.60" fill="url(#fp2)" opacity="0.8"></circle><circle cx="27.60" cy="16.10" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="4.60" cy="27.60" r="4.60" fill="url(#fp0)" opacity="1"></circle><circle cx="4.60" cy="27.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="16.10" cy="27.60" r="4.60" fill="url(#fp1)" opacity="1"></circle><circle cx="16.10" cy="27.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="27.60" cy="27.60" r="4.60" fill="url(#fp2)" opacity="1"></circle><circle cx="27.60" cy="27.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle></svg><div style="font-size: 26px; font-weight: 500; letter-spacing: -0.005em; line-height: 1; margin-top: 1px">Yarden Amir</div><div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52; margin-top: 6px">yardenamir.com · hand-coded, view source welcome</div></div>
 </div>
 </div>
@@ -101,6 +106,8 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = { strokes: [], cur: null, phase: 'intro', el: 0, frame: 0 };
+    this.storyFile = null; this.storyBusy = false; this.shareMsg = ''; this.linkMsg = '';
+    this.SITE = 'https://flyer.yardenamir.com';
     this.introMode = true;
     this.swipeK = 0;
     this.swipeRaf = null;
@@ -481,6 +488,7 @@ class Component extends DCLogic {
         const js = job.map((si) => strokes[si]);
         this.lastJob = { paths: js.length, start: this.jobPartsStart, mm: Math.round(js.reduce((t, s) => t + this.pathLen(s), 0) * 300 / 350) };
         this.setState({ strokes: done, phase: this.introMode ? 'wait' : 'draw', el: 0 });
+        if (!this.introMode) this.prepareStory();
         if (this.introMode) setTimeout(() => this.startSwipe(), 1100);
       } else this.setState({ el });
       this.raf = requestAnimationFrame(tick);
@@ -495,6 +503,123 @@ class Component extends DCLogic {
     this.startSwipe();
   }
 
+
+  // ---------- sharing ----------
+  plateSVG(r) {
+    const g = r / 2, sp = [0.13 * r, 0.185 * r, 0.26 * r], tw = 0.07 * r, op = [0.55, 0.8, 1], w = 6 * r + 2 * g;
+    let s = '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + w + '" viewBox="0 0 ' + w + ' ' + w + '"><defs>';
+    sp.forEach((p, i) => { s += '<pattern id="h' + i + '" patternUnits="userSpaceOnUse" width="' + p + '" height="' + p + '" patternTransform="rotate(45)"><rect width="' + p + '" height="' + tw + '" fill="#262422"/></pattern>'; });
+    s += '</defs>';
+    for (let j = 0; j < 3; j++) for (let i = 0; i < 3; i++) {
+      const cx = r + i * (2 * r + g), cy = r + j * (2 * r + g);
+      s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="url(#h' + i + ')" opacity="' + op[j] + '"/><circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="#262422" stroke-width="' + (0.05 * r) + '" stroke-opacity=".6"/>';
+    }
+    return s + '</svg>';
+  }
+  svgImage(svg) {
+    return new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg); });
+  }
+  innerPath(part) {
+    let d = '';
+    this.state.strokes.filter((s) => s.cut).forEach((s) => {
+      const pts = s.pts, step = Math.max(1, Math.floor(pts.length / 16));
+      let n = 0, inside = 0;
+      for (let k = 0; k < pts.length; k += step) { n++; if (!this.nearEdge(pts[k], part.pts) && this.inPoly(pts[k], part.pts)) inside++; }
+      if (n && inside > n / 2) d += 'M' + pts.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L');
+    });
+    return d;
+  }
+  async prepareStory() {
+    if (this.storyBusy) return;
+    this.storyBusy = true;
+    try {
+      const fmt = (pts) => pts.map((p) => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+      const holes = this.parts.map((p) => '<polygon points="' + fmt(p.pts) + '" fill="#000"/>').join('');
+      const kerf = this.state.strokes.filter((s) => s.cut).map((s) => '<polyline points="' + fmt(s.pts) + '" fill="none" stroke="rgba(92,52,20,.35)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><polyline points="' + fmt(s.pts) + '" fill="none" stroke="#262422" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>').join('');
+      const bed = '<svg xmlns="http://www.w3.org/2000/svg" width="860" height="737" viewBox="0 0 350 300"><defs><mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="350" height="300"><rect width="350" height="300" fill="#fff"/>' + holes + '</mask></defs>'
+        + '<rect width="350" height="300" fill="#262422"/><path d="' + this.hexD + '" fill="none" stroke="#3A3733" stroke-width="1.1"/>'
+        + '<rect x="12" y="16" width="326" height="272" rx="2" fill="#C79A5B" mask="url(#m)"/><g mask="url(#m)">' + kerf + '</g>'
+        + '<rect width="7" height="300" fill="#2E2D2A"/><rect x="343" width="7" height="300" fill="#2E2D2A"/></svg>';
+      const fresh = this.parts.slice(this.lastJob ? this.lastJob.start : 0);
+      const pool = fresh.length ? fresh : this.parts;
+      const part = pool.slice().sort((a, b) => b.area - a.area)[0];
+      let pieceImg = null, pw = 0, ph = 0;
+      if (part) {
+        const xs = part.pts.map((p) => p[0]), ys = part.pts.map((p) => p[1]);
+        const x0 = Math.min(...xs) - 4, y0 = Math.min(...ys) - 4, w = Math.max(...xs) - x0 + 4, h = Math.max(...ys) - y0 + 4;
+        const sc = Math.min(330 / w, 330 / h, 860 / 350 * 1.05);
+        pw = w * sc; ph = h * sc;
+        pieceImg = await this.svgImage('<svg xmlns="http://www.w3.org/2000/svg" width="' + pw + '" height="' + ph + '" viewBox="' + x0 + ' ' + y0 + ' ' + w + ' ' + h + '"><polygon points="' + fmt(part.pts) + '" fill="#C79A5B" stroke="#262422" stroke-width="1.8" stroke-linejoin="round"/><path d="' + this.innerPath(part) + '" fill="none" stroke="#262422" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+      }
+      const [bedImg, plateImg] = await Promise.all([this.svgImage(bed), this.svgImage(this.plateSVG(13))]);
+      try { await Promise.all(['500 70px "EB Garamond"', '500 46px "EB Garamond"', '500 26px "IBM Plex Mono"', '400 30px "IBM Plex Mono"'].map((f) => document.fonts.load(f))); } catch (e) {}
+      const cv = document.createElement('canvas'); cv.width = 1080; cv.height = 1920;
+      const ctx = cv.getContext('2d');
+      ctx.fillStyle = '#F1E9DC'; ctx.fillRect(0, 0, 1080, 1920);
+      const serif = '"EB Garamond", Garamond, serif', mono = '"IBM Plex Mono", monospace';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = '#7A5A30'; ctx.font = '500 26px ' + mono;
+      if ('letterSpacing' in ctx) ctx.letterSpacing = '2px';
+      ctx.fillText('CUT ON THE LASER BED', 110, 278);
+      if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+      ctx.fillStyle = '#262422'; ctx.font = '500 70px ' + serif;
+      ['Yarden Amir is on a job hunt.', 'I cut this with a laser', 'on his resume.'].forEach((l, i) => ctx.fillText(l, 110, 370 + i * 76));
+      ctx.drawImage(bedImg, 110, 593, 860, 737);
+      if (pieceImg) {
+        ctx.save();
+        ctx.translate(1000 - pw / 2, 1380 - ph / 2); ctx.rotate(-8 * Math.PI / 180);
+        ctx.shadowColor = 'rgba(38,36,34,0.28)'; ctx.shadowBlur = 30; ctx.shadowOffsetY = 18;
+        ctx.drawImage(pieceImg, -pw / 2, -ph / 2, pw, ph);
+        ctx.restore();
+      }
+      ctx.fillStyle = '#262422'; ctx.fillRect(110, 1460, 860, 2);
+      ctx.font = '500 46px ' + serif; ctx.fillText('Your turn →', 110, 1532);
+      ctx.fillStyle = '#7A5A30'; ctx.font = '400 30px ' + mono; ctx.textAlign = 'right';
+      ctx.fillText('flyer.yardenamir.com', 970, 1528); ctx.textAlign = 'left';
+      ctx.drawImage(plateImg, 110, 1572, 91, 91);
+      ctx.fillStyle = '#262422'; ctx.font = '500 44px ' + serif; ctx.fillText('Yarden Amir', 223, 1612);
+      ctx.fillStyle = '#5F5A52'; ctx.font = '400 19px ' + mono; ctx.fillText('Designer · Making & Fabrication Instructor · Craft Researcher', 223, 1650);
+      const blob = await new Promise((r) => cv.toBlob(r, 'image/png'));
+      this.storyFile = new File([blob], 'yarden-amir-laser-cut.png', { type: 'image/png' });
+      this.storyURL && URL.revokeObjectURL(this.storyURL);
+      this.storyURL = URL.createObjectURL(blob);
+      this.shareMsg = 'Opens your share sheet · the link is copied for a Link sticker';
+    } catch (e) {
+      this.shareMsg = 'Could not build the image; the link will still be copied';
+    } finally {
+      this.storyBusy = false;
+      this.setState({ frame: performance.now() });
+    }
+  }
+  copyLink() {
+    try { if (navigator.clipboard) navigator.clipboard.writeText(this.SITE).catch(() => {}); } catch (e) {}
+  }
+  onShare() {
+    this.copyLink();
+    const f = this.storyFile;
+    const text = 'Yarden Amir is on a job hunt. I cut this with a laser on his resume. ' + this.SITE;
+    if (f && navigator.canShare && navigator.canShare({ files: [f] })) {
+      navigator.share({ files: [f], text }).then(() => { this.shareMsg = 'Shared · the link is copied: add it with a Link sticker'; this.setState({ frame: performance.now() }); })
+        .catch(() => {});
+      this.shareMsg = 'Link copied: flyer.yardenamir.com · add it with a Link sticker';
+    } else if (f) {
+      const a = document.createElement('a'); a.href = this.storyURL; a.download = f.name; document.body.appendChild(a); a.click(); a.remove();
+      this.shareMsg = 'Image saved and link copied · post it to your story with a Link sticker';
+    } else {
+      this.shareMsg = 'Link copied: flyer.yardenamir.com';
+    }
+    this.setState({ frame: performance.now() });
+  }
+  onShareLink() {
+    this.copyLink();
+    if (navigator.share) {
+      navigator.share({ title: 'Yarden Amir is on a job hunt', text: 'Cut something with a laser on his resume.', url: this.SITE }).catch(() => {});
+      this.linkMsg = '';
+    } else {
+      this.linkMsg = 'Link copied: flyer.yardenamir.com';
+    }
+    this.setState({ frame: performance.now() });
+  }
   renderVals() {
     const accent = this.props.accent ?? '#B4593A';
     const { strokes, cur, phase, el } = this.state;
@@ -591,7 +716,12 @@ class Component extends DCLogic {
       move: (e) => this.onMove(e),
       up: () => this.onUp(),
       cut: () => this.onCut(),
-      clear: () => this.onClear()
+      clear: () => this.onClear(),
+      share: () => this.onShare(),
+      shareLink: () => this.onShareLink(),
+      shareDisplay: (!this.introMode && this.parts.length) ? 'flex' : 'none',
+      shareMsg: this.storyBusy ? 'Preparing your image…' : (this.shareMsg || 'Opens your share sheet · the link is copied for a Link sticker'),
+      linkMsg: this.linkMsg
     };
   }
 }
@@ -672,6 +802,7 @@ function render() {
     $('hint').textContent = v.hint || '';
     $('cut').disabled = !!v.noCut; $('cut').style.background = v.accent;
     $('clear').disabled = !!v.noClear;
+    $('shareBox').style.display = v.shareDisplay; $('shareMsg').textContent = v.shareMsg; $('linkMsg').textContent = v.linkMsg || '';
   } finally { rendering = false; }
 }
 const bed = $('bed');
@@ -681,6 +812,8 @@ bed.addEventListener('pointerup', () => c.onUp());
 bed.addEventListener('pointercancel', () => c.onUp());
 $('cut').addEventListener('click', () => c.onCut());
 $('clear').addEventListener('click', () => c.onClear());
+$('shareBtn').addEventListener('click', () => c.onShare());
+$('shareLinkBtn').addEventListener('click', () => c.onShareLink());
 render();
 </script>
 </body>
