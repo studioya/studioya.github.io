@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yarden Amir — Designer · Making &amp; Fabrication Instructor · Craft Researcher</title>
+<meta name="description" content="Yarden Amir is looking for the next thing. Draw on the laser bed, then press Cut.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F1E9DC}
+#app{max-width:480px;margin:0 auto}
+a{color:#7A5A30}a:hover{color:#262422}
+button:focus-visible,a:focus-visible{outline:2px solid #262422;outline-offset:2px}
+button:disabled{opacity:.45;cursor:default}
+.drop{transform-box:fill-box;transform-origin:center;animation:drop .9s ease-in forwards}
+@keyframes drop{0%{transform:none;opacity:1}55%{opacity:1}100%{transform:translateY(6px) scale(.8) rotate(4deg);opacity:0}}
+</style>
+</head>
+<body>
+<div id="app">
+<div style="width: 100%; min-width: 320px; box-sizing: border-box; background: #F1E9DC; color: #262422; font-family: 'EB Garamond', Garamond, 'Times New Roman', serif; font-variant-numeric: oldstyle-nums; padding: 24px 20px 40px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; align-items: center; gap: 11px"><svg width="32" height="32" viewBox="0 0 42.00 42.00" role="img" aria-label="Yarden Amir test-plate mark" style="display: block; color: #262422"><defs><pattern id="tq0" patternUnits="userSpaceOnUse" width="0.780" height="0.780" patternTransform="rotate(45)"><rect width="0.780" height="0.420" fill="currentColor"></rect></pattern><pattern id="tq1" patternUnits="userSpaceOnUse" width="1.110" height="1.110" patternTransform="rotate(45)"><rect width="1.110" height="0.420" fill="currentColor"></rect></pattern><pattern id="tq2" patternUnits="userSpaceOnUse" width="1.560" height="1.560" patternTransform="rotate(45)"><rect width="1.560" height="0.420" fill="currentColor"></rect></pattern></defs><circle cx="6.00" cy="6.00" r="6.00" fill="url(#tq0)" opacity="0.55"></circle><circle cx="6.00" cy="6.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle><circle cx="21.00" cy="6.00" r="6.00" fill="url(#tq1)" opacity="0.55"></circle><circle cx="21.00" cy="6.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle><circle cx="36.00" cy="6.00" r="6.00" fill="url(#tq2)" opacity="0.55"></circle><circle cx="36.00" cy="6.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle><circle cx="6.00" cy="21.00" r="6.00" fill="url(#tq0)" opacity="0.8"></circle><circle cx="6.00" cy="21.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle><circle cx="21.00" cy="21.00" r="6.00" fill="url(#tq1)" opacity="0.8"></circle><circle cx="21.00" cy="21.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle><circle cx="36.00" cy="21.00" r="6.00" fill="url(#tq2)" opacity="0.8"></circle><circle cx="36.00" cy="21.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle><circle cx="6.00" cy="36.00" r="6.00" fill="url(#tq0)" opacity="1"></circle><circle cx="6.00" cy="36.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle><circle cx="21.00" cy="36.00" r="6.00" fill="url(#tq1)" opacity="1"></circle><circle cx="21.00" cy="36.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle><circle cx="36.00" cy="36.00" r="6.00" fill="url(#tq2)" opacity="1"></circle><circle cx="36.00" cy="36.00" r="6.00" fill="none" stroke="currentColor" stroke-width="0.300" stroke-opacity=".6"></circle></svg><span style="font-size: 28px; font-weight: 500; letter-spacing: -0.005em; line-height: 1">Yarden Amir</span></div>
+<div style="display: flex; flex-direction: column; opacity: 1; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; gap: 5px">
+<div style="position: relative; width: 100%; aspect-ratio: 350 / 300; border-radius: 0; overflow: hidden; background-color: #262422">
+<svg id="bed" viewBox="0 0 350 300" width="100%" height="100%" role="img" aria-label="Laser cutter bed. Draw lines with your finger, then press Cut." style="position: absolute; inset: 0; display: block; touch-action: none; cursor: crosshair"></svg>
+</div>
+<div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52">
+<span id="readout"></span>
+<span id="status"></span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<button id="cut" style="min-height: 52px; border: 0; border-radius: 0; background: #B4593A; color: #FFFFFF; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 16px; letter-spacing: 0.08em; cursor: pointer">CUT</button>
+<button id="clear" style="min-height: 52px; border: 1px solid #262422; border-radius: 0; background: transparent; color: #262422; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 16px; letter-spacing: 0.08em; cursor: pointer">CLEAR</button>
+</div>
+<div id="hint" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52"></div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<h1 style="margin: 0; font-size: 40px; line-height: 1.1; font-weight: 500; letter-spacing: -0.005em">Yarden is looking for the next thing.</h1>
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.5; color: #7A5A30">Designer · Making &amp; Fabrication Instructor · Craft Researcher</div>
+<p style="margin: 0; font-size: 22px; line-height: 1.45; color: #262422">I design and make handmade objects in a digital way, working in a hybrid space of traditional, industrial, and modern technologies. I observe and research workshop culture, and instruct others in both old and new practices.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A5A30; padding-bottom: 8px; border-bottom: 1px solid #262422">01&nbsp;&nbsp;What I bring</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">Rhino / Grasshopper</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">Adobe Creative Suite</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">3D printing</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">Laser cutting</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">CNC milling</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">AI fluency</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">Parametric thinking</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">Craft research</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">Workshop culture</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">Craft instruction</span>
+<span style="border: 1px solid rgba(38, 36, 34, 0.18); border-radius: 2px; padding: 6px 12px; font-size: 17px; background: #FFFFFF">Workshop design</span>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A5A30; padding-bottom: 8px; border-bottom: 1px solid #262422">02&nbsp;&nbsp;Background</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 0">
+<li style="padding: 12px 0; border-bottom: 1px solid rgba(38, 36, 34, 0.18); font-size: 17px; line-height: 1.45; color: #5F5A52"><span style="color: #262422; font-weight: 500">Workshop Supervisor</span>, Bezalel Academy, Jerusalem: running digital fabrication for design, architecture and art students <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52; white-space: nowrap">· 2019–2026</span></li>
+<li style="padding: 12px 0; border-bottom: 1px solid rgba(38, 36, 34, 0.18); font-size: 17px; line-height: 1.45; color: #5F5A52"><span style="color: #262422; font-weight: 500">Own practice</span>: designing and fabricating under my own name <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52; white-space: nowrap">· 2017–now</span></li>
+<li style="padding: 12px 0; border-bottom: 1px solid rgba(38, 36, 34, 0.18); font-size: 17px; line-height: 1.45; color: #5F5A52"><span style="color: #262422; font-weight: 500">MDes Industrial Design</span>, Bezalel Academy <span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52; white-space: nowrap">· 2023</span></li>
+<li style="padding: 12px 0; border-bottom: 1px solid rgba(38, 36, 34, 0.18); font-size: 17px; line-height: 1.45; color: #5F5A52"><span style="color: #262422; font-weight: 500">Before design</span>: fine woodworker, art printer and framer, high-school history teacher</li><li style="padding: 12px 0; border-bottom: 1px solid rgba(38, 36, 34, 0.18); font-size: 17px; line-height: 1.45; color: #5F5A52"><span style="color: #262422; font-weight: 500">MA in Jewish History</span>, Tel Aviv University&nbsp;<span style="color: #5F5A52; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; white-space: nowrap">· 2018</span></li>
+
+</ul>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A5A30; padding-bottom: 8px; border-bottom: 1px solid #262422">03&nbsp;&nbsp;Selected work</div>
+<a href="https://studioya.github.io/pdf/lasers-ceramics.pdf" target="_blank" rel="noopener" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 72px; padding: 8px 0; border-bottom: 1px solid rgba(38, 36, 34, 0.18); text-decoration: none; color: #262422; font-size: 19px; line-height: 1.3"><img src="img/085277a97b.jpg" alt="Ceramic test tile etched with a radial pattern of tones" style="display: block; width: 56px; height: 56px; flex: none; object-fit: cover; border-radius: 0"><span style="flex: 1; min-width: 0">Lasers × ceramics: research to objects</span><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52; white-space: nowrap">2023–24 ↗</span></a>
+<a href="https://studioya.github.io/pdf/parametric-objects.pdf" target="_blank" rel="noopener" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 72px; padding: 8px 0; border-bottom: 1px solid rgba(38, 36, 34, 0.18); text-decoration: none; color: #262422; font-size: 19px; line-height: 1.3"><img src="img/efdc1edb24.jpg" alt="Terracotta dish covered in a laser-etched black pixel pattern" style="display: block; width: 56px; height: 56px; flex: none; object-fit: cover; border-radius: 0"><span style="flex: 1; min-width: 0">Parametric objects</span><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52; white-space: nowrap">2021–now ↗</span></a>
+<a href="https://studioya.github.io/pdf/aumbry-2.0.pdf" target="_blank" rel="noopener" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 72px; padding: 8px 0; border-bottom: 1px solid rgba(38, 36, 34, 0.18); text-decoration: none; color: #262422; font-size: 19px; line-height: 1.3"><img src="img/2b609ade53.jpg" alt="Render of milled Gothic tracery in oak beside an orange aluminium track" style="display: block; width: 56px; height: 56px; flex: none; object-fit: cover; border-radius: 0"><span style="flex: 1; min-width: 0">Aumbry 2.0: historical craft, redesigned</span><span style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52; white-space: nowrap">2024–25 ↗</span></a>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #7A5A30; padding-bottom: 8px; border-bottom: 1px solid #262422">04&nbsp;&nbsp;What’s next</div>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #262422">Looking for a full-time or near-full-time role, or projects in design and fabrication · Tel Aviv, on site or remote.</p>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: 4px">
+<a href="mailto:studio@yardenamir.com" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; min-height: 56px; border-radius: 0; background: #B4593A; color: #FFFFFF; font-weight: 500; font-size: 20px; text-decoration: none">Write to studio@yardenamir.com</a>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<a href="https://wa.me/972524251299" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid #262422; border-radius: 0; color: #262422; text-decoration: none; font-size: 18px">WhatsApp</a>
+<a href="https://www.instagram.com/yardenamirstudio/" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid #262422; border-radius: 0; color: #262422; text-decoration: none; font-size: 18px">Instagram</a>
+<a href="https://studioya.github.io/pdf/cv-yarden-amir.pdf" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid #262422; border-radius: 0; color: #262422; text-decoration: none; font-size: 18px">CV</a>
+<a href="https://github.com/studioya?tab=repositories" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; min-height: 48px; border: 1px solid #262422; border-radius: 0; color: #262422; text-decoration: none; font-size: 18px">GitHub</a>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 24px; border-top: 1px solid rgba(38, 36, 34, 0.18)"><svg width="32.2" height="32.2" viewBox="0 0 32.20 32.20" role="img" aria-label="Yarden Amir test-plate mark" style="display: block; color: #262422"><defs><pattern id="fp0" patternUnits="userSpaceOnUse" width="0.598" height="0.598" patternTransform="rotate(45)"><rect width="0.598" height="0.322" fill="currentColor"></rect></pattern><pattern id="fp1" patternUnits="userSpaceOnUse" width="0.851" height="0.851" patternTransform="rotate(45)"><rect width="0.851" height="0.322" fill="currentColor"></rect></pattern><pattern id="fp2" patternUnits="userSpaceOnUse" width="1.196" height="1.196" patternTransform="rotate(45)"><rect width="1.196" height="0.322" fill="currentColor"></rect></pattern></defs><circle cx="4.60" cy="4.60" r="4.60" fill="url(#fp0)" opacity="0.55"></circle><circle cx="4.60" cy="4.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="16.10" cy="4.60" r="4.60" fill="url(#fp1)" opacity="0.55"></circle><circle cx="16.10" cy="4.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="27.60" cy="4.60" r="4.60" fill="url(#fp2)" opacity="0.55"></circle><circle cx="27.60" cy="4.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="4.60" cy="16.10" r="4.60" fill="url(#fp0)" opacity="0.8"></circle><circle cx="4.60" cy="16.10" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="16.10" cy="16.10" r="4.60" fill="url(#fp1)" opacity="0.8"></circle><circle cx="16.10" cy="16.10" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="27.60" cy="16.10" r="4.60" fill="url(#fp2)" opacity="0.8"></circle><circle cx="27.60" cy="16.10" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="4.60" cy="27.60" r="4.60" fill="url(#fp0)" opacity="1"></circle><circle cx="4.60" cy="27.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="16.10" cy="27.60" r="4.60" fill="url(#fp1)" opacity="1"></circle><circle cx="16.10" cy="27.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle><circle cx="27.60" cy="27.60" r="4.60" fill="url(#fp2)" opacity="1"></circle><circle cx="27.60" cy="27.60" r="4.60" fill="none" stroke="currentColor" stroke-width="0.230" stroke-opacity=".6"></circle></svg><div style="font-size: 26px; font-weight: 500; letter-spacing: -0.005em; line-height: 1; margin-top: 1px">Yarden Amir</div><div style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; color: #5F5A52; margin-top: 6px">yardenamir.com · hand-coded, view source welcome</div></div>
+</div>
+</div>
+<script>
+class DCLogic { constructor(props) { this.props = props || {}; this.state = {}; } setState(s, cb) { Object.assign(this.state, s); render(); if (cb) cb(); } }
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { strokes: [], cur: null, phase: 'intro', el: 0, frame: 0 };
+    this.introMode = true;
+    this.swipeK = 0;
+    this.swipeRaf = null;
+    this.raf = null;
+    this.segs = [];
+    this.total = 0;
+    this.smoke = [];
+    this.now = 0;
+    this.lastJob = null;
+    this.parts = [];
+    this.faceKey = '';
+    this.jobPartsStart = 0;
+    this.HOME = [24, 9];
+    this.VENT = [175, 6];
+    this.hexD = this.buildHex(7);
+  }
+  componentWillUnmount() { if (this.raf) cancelAnimationFrame(this.raf); if (this.swipeRaf) cancelAnimationFrame(this.swipeRaf); }
+
+  buildHex(r) {
+    const w = Math.sqrt(3) * r, h = 1.5 * r;
+    let d = '';
+    for (let row = -1; row * h < 310; row++) {
+      for (let col = -1; col * w < 360; col++) {
+        const cx = col * w + (row % 2 ? w / 2 : 0), cy = row * h;
+        for (let k = 0; k < 6; k++) {
+          const a = Math.PI / 6 + k * Math.PI / 3;
+          d += (k ? 'L' : 'M') + (cx + r * Math.cos(a)).toFixed(1) + ' ' + (cy + r * Math.sin(a)).toFixed(1);
+        }
+        d += 'Z';
+      }
+    }
+    return d;
+  }
+
+  // ---------- geometry: turn a scribble into lines and arcs ----------
+  distSeg(p, a, b) {
+    const dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy;
+    let t = L ? ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / L : 0;
+    t = Math.max(0, Math.min(1, t));
+    return Math.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy);
+  }
+  circum(A, M, B) {
+    const d = 2 * (A[0] * (M[1] - B[1]) + M[0] * (B[1] - A[1]) + B[0] * (A[1] - M[1]));
+    if (Math.abs(d) < 1e-6) return null;
+    const a2 = A[0] * A[0] + A[1] * A[1], m2 = M[0] * M[0] + M[1] * M[1], b2 = B[0] * B[0] + B[1] * B[1];
+    const ux = (a2 * (M[1] - B[1]) + m2 * (B[1] - A[1]) + b2 * (A[1] - M[1])) / d;
+    const uy = (a2 * (B[0] - M[0]) + m2 * (A[0] - B[0]) + b2 * (M[0] - A[0])) / d;
+    return { c: [ux, uy], r: Math.hypot(A[0] - ux, A[1] - uy) };
+  }
+  arcPts(A, M, B) {
+    const C = this.circum(A, M, B);
+    if (!C || C.r > 2000) return [B];
+    const TAU = Math.PI * 2, ang = (p) => Math.atan2(p[1] - C.c[1], p[0] - C.c[0]);
+    const ccw = (f, t) => (((t - f) % TAU) + TAU) % TAU;
+    const a0 = ang(A), am = ang(M), a1 = ang(B);
+    const sweep = ccw(a0, am) < ccw(a0, a1) ? ccw(a0, a1) : -(TAU - ccw(a0, a1));
+    const n = Math.max(4, Math.ceil(Math.abs(sweep) * C.r / 4));
+    const out = [];
+    for (let i = 1; i < n; i++) {
+      const a = a0 + sweep * i / n;
+      out.push([C.c[0] + C.r * Math.cos(a), C.c[1] + C.r * Math.sin(a)]);
+    }
+    out.push(B);
+    return out;
+  }
+  clampP(p) { return [Math.max(14, Math.min(336, p[0])), Math.max(18, Math.min(286, p[1]))]; }
+  fitStroke(raw, closed, pinEnd) {
+    const pts = closed ? raw.concat([raw[0]]) : raw;
+    if (closed) {
+      const body = raw;
+      const cx = body.reduce((t, p) => t + p[0], 0) / body.length, cy = body.reduce((t, p) => t + p[1], 0) / body.length;
+      const ds = body.map((p) => Math.hypot(p[0] - cx, p[1] - cy));
+      const R = ds.reduce((t, v) => t + v, 0) / ds.length;
+      const sd = Math.sqrt(ds.reduce((t, v) => t + (v - R) * (v - R), 0) / ds.length);
+      if (R > 8 && sd / R < 0.13) {
+        const a0 = Math.atan2(body[0][1] - cy, body[0][0] - cx), out = [];
+        const n = Math.max(24, Math.ceil(2 * Math.PI * R / 4));
+        for (let i = 0; i < n; i++) out.push(this.clampP([cx + R * Math.cos(a0 + i * 2 * Math.PI / n), cy + R * Math.sin(a0 + i * 2 * Math.PI / n)]));
+        out.push(out[0]);
+        return { pts: out, closed: true, nodes: [[cx, cy]], cut: false };
+      }
+    }
+    const prims = [];
+    const fit = (i, j, depth) => {
+      if (j - i < 2) { prims.push({ i, j, arc: false }); return; }
+      const A = pts[i], B = pts[j];
+      let dev = 0, kmax = i + 1;
+      for (let k = i + 1; k < j; k++) { const d = this.distSeg(pts[k], A, B); if (d > dev) { dev = d; kmax = k; } }
+      if (dev < 5) { prims.push({ i, j, arc: false }); return; }
+      const m = (i + j) >> 1, C = this.circum(A, pts[m], B);
+      if (C && C.r < 700 && j - i >= 4) {
+        let res = 0;
+        for (let k = i; k <= j; k++) res = Math.max(res, Math.abs(Math.hypot(pts[k][0] - C.c[0], pts[k][1] - C.c[1]) - C.r));
+        if (res < 4.5) { prims.push({ i, j, arc: true, m }); return; }
+      }
+      if (depth > 8) { prims.push({ i, j, arc: false }); return; }
+      fit(i, kmax, depth + 1);
+      fit(kmax, j, depth + 1);
+    };
+    const last = pts.length - 1;
+    if (closed) {
+      let far = 1, fd = 0;
+      for (let k = 1; k < last; k++) { const d = Math.hypot(pts[k][0] - pts[0][0], pts[k][1] - pts[0][1]); if (d > fd) { fd = d; far = k; } }
+      fit(0, far, 0); fit(far, last, 0);
+    } else fit(0, last, 0);
+
+    const V = [pts[prims[0].i].slice()];
+    prims.forEach((p) => V.push(pts[p.j].slice()));
+    if (closed) V[V.length - 1] = V[0];
+    const STEP = Math.PI / 4, SNAP = 7 * Math.PI / 180;
+    prims.forEach((p, k) => {
+      if (p.arc || ((closed || pinEnd) && k === prims.length - 1)) return;
+      const a = V[k], b = V[k + 1], L = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      const ang = Math.atan2(b[1] - a[1], b[0] - a[0]), snapped = Math.round(ang / STEP) * STEP;
+      if (Math.abs(ang - snapped) < SNAP) {
+        const nb = this.clampP([a[0] + L * Math.cos(snapped), a[1] + L * Math.sin(snapped)]);
+        b[0] = nb[0]; b[1] = nb[1];
+      }
+    });
+    const out = [V[0]];
+    prims.forEach((p, k) => {
+      if (p.arc) this.arcPts(V[k], pts[p.m], V[k + 1]).forEach((q) => out.push(q));
+      else out.push(V[k + 1]);
+    });
+    if (closed) out[out.length - 1] = out[0];
+    return { pts: out.map((p, i) => (closed && i === out.length - 1) ? out[0] : this.clampP(p)), closed, nodes: closed ? V.slice(0, -1) : V, cut: false };
+  }
+
+  // ---------- joining strokes into shapes ----------
+  snapPoint(p) {
+    let best = null, bd = 14;
+    this.state.strokes.forEach((s) => {
+      [s.pts[0], s.pts[s.pts.length - 1]].forEach((q) => {
+        const d = Math.hypot(q[0] - p[0], q[1] - p[1]);
+        if (d < bd) { bd = d; best = q.slice(); }
+      });
+    });
+    if (best) return best;
+    bd = 10;
+    this.state.strokes.forEach((s) => {
+      for (let i = 1; i < s.pts.length; i++) {
+        const a = s.pts[i - 1], b = s.pts[i], dx = b[0] - a[0], dy = b[1] - a[1], L = dx * dx + dy * dy;
+        if (!L) continue;
+        const u = Math.max(0, Math.min(1, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / L));
+        const q = [a[0] + u * dx, a[1] + u * dy], d = Math.hypot(q[0] - p[0], q[1] - p[1]);
+        if (d < bd) { bd = d; best = q; }
+      }
+    });
+    return best;
+  }
+  computeFaces(polys) {
+    const segs = [];
+    polys.forEach((p) => { for (let i = 1; i < p.length; i++) if (Math.hypot(p[i][0] - p[i - 1][0], p[i][1] - p[i - 1][1]) > 0.01) segs.push([p[i - 1], p[i]]); });
+    const splits = segs.map(() => [0, 1]);
+    const box = segs.map(([a, b]) => [Math.min(a[0], b[0]) - 3, Math.min(a[1], b[1]) - 3, Math.max(a[0], b[0]) + 3, Math.max(a[1], b[1]) + 3]);
+    for (let i = 0; i < segs.length; i++) {
+      for (let j = i + 1; j < segs.length; j++) {
+        const A = box[i], B = box[j];
+        if (A[0] > B[2] || B[0] > A[2] || A[1] > B[3] || B[1] > A[3]) continue;
+        const [a, b] = segs[i], [c, d] = segs[j];
+        const r = [b[0] - a[0], b[1] - a[1]], s = [d[0] - c[0], d[1] - c[1]];
+        const den = r[0] * s[1] - r[1] * s[0];
+        if (Math.abs(den) < 1e-9) continue;
+        const ca = [c[0] - a[0], c[1] - a[1]];
+        const t = (ca[0] * s[1] - ca[1] * s[0]) / den, u = (ca[0] * r[1] - ca[1] * r[0]) / den;
+        const eT = 2.5 / Math.hypot(r[0], r[1]), eU = 2.5 / Math.hypot(s[0], s[1]);
+        if (t >= -eT && t <= 1 + eT && u >= -eU && u <= 1 + eU) {
+          splits[i].push(Math.max(0, Math.min(1, t)));
+          splits[j].push(Math.max(0, Math.min(1, u)));
+        }
+      }
+    }
+    const nodes = [], grid = {};
+    const nid = (p) => {
+      const gx = Math.round(p[0] / 2), gy = Math.round(p[1] / 2);
+      for (let x = gx - 1; x <= gx + 1; x++) for (let y = gy - 1; y <= gy + 1; y++) {
+        for (const id of (grid[x + ',' + y] || [])) if (Math.hypot(nodes[id][0] - p[0], nodes[id][1] - p[1]) < 1.6) return id;
+      }
+      nodes.push(p); (grid[gx + ',' + gy] = grid[gx + ',' + gy] || []).push(nodes.length - 1);
+      return nodes.length - 1;
+    };
+    const adj = new Map(), link = (u, v) => {
+      if (u === v) return;
+      if (!adj.has(u)) adj.set(u, new Set());
+      if (!adj.has(v)) adj.set(v, new Set());
+      adj.get(u).add(v); adj.get(v).add(u);
+    };
+    segs.forEach(([a, b], i) => {
+      const ts = Array.from(new Set(splits[i].map((x) => Math.round(x * 1e5) / 1e5))).sort((x, y) => x - y);
+      let prev = null;
+      ts.forEach((tt) => {
+        const id = nid([a[0] + (b[0] - a[0]) * tt, a[1] + (b[1] - a[1]) * tt]);
+        if (prev !== null) link(prev, id);
+        prev = id;
+      });
+    });
+    let pruned = true;
+    while (pruned) {
+      pruned = false;
+      for (const [u, set] of adj) if (set.size < 2) { set.forEach((v) => adj.get(v) && adj.get(v).delete(u)); adj.delete(u); pruned = true; }
+    }
+    const order = new Map();
+    for (const [u, set] of adj) {
+      const p = nodes[u];
+      order.set(u, Array.from(set).sort((x, y) => Math.atan2(nodes[x][1] - p[1], nodes[x][0] - p[0]) - Math.atan2(nodes[y][1] - p[1], nodes[y][0] - p[0])));
+    }
+    const seen = new Set(), faces = [];
+    for (const [u0, list] of order) {
+      for (const v0 of list) {
+        if (seen.has(u0 + '>' + v0)) continue;
+        const cyc = [];
+        let u = u0, v = v0, guard = 0;
+        while (guard++ < 20000) {
+          seen.add(u + '>' + v);
+          cyc.push(nodes[u]);
+          const nb = order.get(v), k = nb.indexOf(u);
+          const w = nb[(k - 1 + nb.length) % nb.length];
+          u = v; v = w;
+          if (u === u0 && v === v0) break;
+        }
+        let area = 0;
+        for (let i = 0; i < cyc.length; i++) { const p = cyc[i], q = cyc[(i + 1) % cyc.length]; area += p[0] * q[1] - q[0] * p[1]; }
+        area /= 2;
+        if (area > 40) faces.push({ pts: cyc.concat([cyc[0]]), area });
+      }
+    }
+    return faces;
+  }
+  nearEdge(p, poly) {
+    for (let i = 1; i < poly.length; i++) if (this.distSeg(p, poly[i - 1], poly[i]) < 2.5) return true;
+    return false;
+  }
+  inPoly(p, poly) {
+    let inside = false;
+    for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+      const a = poly[i], b = poly[j];
+      if ((a[1] > p[1]) !== (b[1] > p[1]) && p[0] < (b[0] - a[0]) * (p[1] - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
+  }
+  updateParts(cutSet) {
+    const key = cutSet.join(',');
+    if (key === this.faceKey) return;
+    this.faceKey = key;
+    if (!cutSet.length) return;
+    const faces = this.computeFaces(cutSet.map((si) => this.state.strokes[si].pts));
+    faces.sort((a, b) => b.area - a.area).forEach((f) => {
+      const n = f.pts.length - 1;
+      const c = [f.pts.slice(0, n).reduce((t, p) => t + p[0], 0) / n, f.pts.slice(0, n).reduce((t, p) => t + p[1], 0) / n];
+      if (this.parts.some((p) => f.area <= p.area * 1.03 && this.inPoly(c, p.pts))) return;
+      this.parts.push({ pts: f.pts, area: f.area });
+    });
+  }
+
+  // ---------- input ----------
+  pt(e) {
+    const r = e.currentTarget.getBoundingClientRect();
+    return this.clampP([(e.clientX - r.left) * 350 / r.width, (e.clientY - r.top) * 300 / r.height]);
+  }
+  startIntro() {
+    const r = [[52, 106], [298, 106], [298, 214], [52, 214]];
+    const pts = r.concat([r[0]]);
+    this.setState({ strokes: [{ pts, closed: true, nodes: [], cut: false }], phase: 'draw', cur: null }, () => this.onCut());
+  }
+  startSwipe() {
+    if (this.swipeRaf) cancelAnimationFrame(this.swipeRaf);
+    const start = performance.now(), D = 1100;
+    let cleared = false;
+    this.setState({ phase: 'swiping', cur: null });
+    const step = () => {
+      const k = Math.min(1, (performance.now() - start) / D);
+      if (!cleared && k >= 0.5) {
+        cleared = true;
+        this.parts = []; this.faceKey = ''; this.lastJob = null; this.introMode = false;
+        this.setState({ strokes: [], el: 0 });
+      }
+      this.swipeK = k;
+      if (k < 1) { this.setState({ frame: performance.now() }); this.swipeRaf = requestAnimationFrame(step); }
+      else { this.swipeRaf = null; this.swipeK = 0; this.setState({ phase: 'draw' }); }
+    };
+    this.swipeRaf = requestAnimationFrame(step);
+  }
+  onDown(e) {
+    if (this.state.phase === 'intro') { this.startIntro(); return; }
+    if (this.state.phase !== 'draw') return;
+    try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+    this.setState({ cur: [this.pt(e)] });
+  }
+  onMove(e) {
+    const c = this.state.cur;
+    if (!c) return;
+    const p = this.pt(e), l = c[c.length - 1];
+    if (Math.hypot(p[0] - l[0], p[1] - l[1]) < 3) return;
+    this.setState({ cur: c.concat([p]) });
+  }
+  onUp() {
+    const c = this.state.cur;
+    if (!c) return;
+    if (c.length < 2) { this.setState({ cur: null }); return; }
+    const closed = c.length >= 6 && Math.hypot(c[0][0] - c[c.length - 1][0], c[0][1] - c[c.length - 1][1]) < 22;
+    let raw = c.slice(), pinEnd = false;
+    if (!closed) {
+      const a = this.snapPoint(raw[0]), b = this.snapPoint(raw[raw.length - 1]);
+      if (a) raw[0] = a;
+      if (b) { raw[raw.length - 1] = b; pinEnd = true; }
+    }
+    const body = closed ? raw.slice(0, -1) : raw;
+    const s = this.fitStroke(body.length >= 2 ? body : raw, closed, pinEnd);
+    this.setState({ cur: null, strokes: this.state.strokes.concat([s]) });
+  }
+
+  // ---------- machine ----------
+  headAt(el) {
+    let t = 0;
+    for (const s of this.segs) {
+      if (t + s.dur <= el) { t += s.dur; continue; }
+      const f = (el - t) / s.dur;
+      return { head: [s.a[0] + (s.b[0] - s.a[0]) * f, s.a[1] + (s.b[1] - s.a[1]) * f], laserOn: s.cut };
+    }
+    return { head: this.HOME, laserOn: false };
+  }
+  stepSmoke(now, spawnAt) {
+    this.now = now;
+    if (spawnAt && this.smoke.length < 140) {
+      const d = Math.hypot(this.VENT[0] - spawnAt[0], this.VENT[1] - spawnAt[1]);
+      this.smoke.push({ x0: spawnAt[0], y0: spawnAt[1] + 4, born: now, life: 900 + d * 2.2, w: Math.random() * 6.28 });
+    }
+    this.smoke = this.smoke.filter((p) => now - p.born < p.life);
+  }
+  pathLen(s) { return s.pts.reduce((u, p, i) => i ? u + Math.hypot(p[0] - s.pts[i - 1][0], p[1] - s.pts[i - 1][1]) : 0, 0); }
+  onCut() {
+    const strokes = this.state.strokes;
+    const job = strokes.map((s, si) => s.cut ? -1 : si).filter((si) => si >= 0);
+    if (!job.length || this.state.phase !== 'draw') return;
+    // Inside-out: cut lines that sit inside an enclosed area before that area's edges.
+    const faces = this.computeFaces(strokes.filter((s) => s.cut).map((s) => s.pts).concat(job.map((si) => strokes[si].pts)));
+    const nearEdge = (p, poly) => { for (let i = 1; i < poly.length; i++) if (this.distSeg(p, poly[i - 1], poly[i]) < 2.5) return true; return false; };
+    const depth = {};
+    job.forEach((si) => {
+      const pts = strokes[si].pts, step = Math.max(1, Math.floor(pts.length / 24));
+      depth[si] = faces.filter((fc) => {
+        let n = 0, inside = 0;
+        for (let k = 0; k < pts.length; k += step) { n++; if (!nearEdge(pts[k], fc.pts) && this.inPoly(pts[k], fc.pts)) inside++; }
+        return inside > n / 2;
+      }).length;
+    });
+    job.sort((x, y) => depth[y] - depth[x] || x - y);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    const CUT = 240, TRAVEL = 700, segs = [];
+    let pos = this.HOME;
+    const add = (a, b, cut, si, pi) => {
+      const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      segs.push({ a, b, cut, si, pi, dur: Math.max(0.001, len / (cut ? CUT : TRAVEL)) });
+    };
+    job.forEach((si) => {
+      const p = strokes[si].pts;
+      add(pos, p[0], false, si, 0);
+      for (let i = 1; i < p.length; i++) add(p[i - 1], p[i], true, si, i);
+      pos = p[p.length - 1];
+    });
+    add(pos, this.HOME, false, -1, 0);
+    this.segs = segs;
+    this.total = segs.reduce((t, s) => t + s.dur, 0);
+    const start = performance.now();
+    const tick = () => {
+      const now = performance.now();
+      if (this.state.phase !== 'cutting') {
+        this.stepSmoke(now, null);
+        this.setState({ frame: now });
+        this.raf = this.smoke.length ? requestAnimationFrame(tick) : null;
+        return;
+      }
+      const el = Math.min(this.total, (now - start) / 1000);
+      const h = this.headAt(el);
+      this.stepSmoke(now, h.laserOn ? h.head : null);
+      if (el >= this.total) {
+        const done = this.state.strokes.map((s, si) => job.indexOf(si) >= 0 ? Object.assign({}, s, { cut: true }) : s);
+        const js = job.map((si) => strokes[si]);
+        this.lastJob = { paths: js.length, start: this.jobPartsStart, mm: Math.round(js.reduce((t, s) => t + this.pathLen(s), 0) * 300 / 350) };
+        this.setState({ strokes: done, phase: this.introMode ? 'wait' : 'draw', el: 0 });
+        if (this.introMode) setTimeout(() => this.startSwipe(), 1100);
+      } else this.setState({ el });
+      this.raf = requestAnimationFrame(tick);
+    };
+    this.lastJob = null;
+    this.jobPartsStart = this.parts.length;
+    this.setState({ phase: 'cutting', el: 0 });
+    this.raf = requestAnimationFrame(tick);
+  }
+  onClear() {
+    if (this.state.phase !== 'draw') return;
+    this.startSwipe();
+  }
+
+  renderVals() {
+    const accent = this.props.accent ?? '#B4593A';
+    const { strokes, cur, phase, el } = this.state;
+    const fmt = (pts) => pts.map((p) => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ');
+    const uncut = strokes.filter((s) => !s.cut);
+    const planned = uncut.map((s) => ({ pts: fmt(s.pts) }));
+    const sketch = cur && cur.length > 1 ? [{ pts: fmt(cur) }] : [];
+    const nodes = [];
+    uncut.forEach((s) => s.nodes.forEach((n) => nodes.push({ x: (n[0] - 2.5).toFixed(1), y: (n[1] - 2.5).toFixed(1) })));
+    let head = this.HOME, laserOn = false;
+    const kerf = [], dropped = [];
+    const reached = strokes.map(() => 0);
+    let partial = null, partialSi = -1;
+    if (phase === 'cutting') {
+      let t = 0;
+      for (const s of this.segs) {
+        if (t + s.dur <= el) { if (s.cut) reached[s.si] = s.pi; t += s.dur; head = s.b; continue; }
+        const f = (el - t) / s.dur;
+        head = [s.a[0] + (s.b[0] - s.a[0]) * f, s.a[1] + (s.b[1] - s.a[1]) * f];
+        laserOn = s.cut;
+        if (s.cut) { partial = head; partialSi = s.si; }
+        break;
+      }
+    }
+    strokes.forEach((s, si) => {
+      if (s.cut) { kerf.push({ pts: fmt(s.pts) }); dropped.push(si); return; }
+      let pts = reached[si] > 0 ? s.pts.slice(0, reached[si] + 1) : (si === partialSi ? [s.pts[0]] : []);
+      if (si === partialSi) pts = pts.concat([partial]);
+      if (pts.length > 1) kerf.push({ pts: fmt(pts) });
+      if (reached[si] === s.pts.length - 1) dropped.push(si);
+    });
+    this.updateParts(dropped);
+    const introDropped = !!(this.introMode && strokes.length && (strokes[0].cut || reached[0] === strokes[0].pts.length - 1));
+    const introStatic = this.introMode && !introDropped ? [{}] : [];
+    const introDrop = introDropped ? [{}] : [];
+    const ease = (x) => x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+    const sk = phase === 'swiping' ? this.swipeK : 0;
+    const dx = sk < 0.5 ? ease(sk * 2) * 380 : -380 * (1 - ease((sk - 0.5) * 2));
+    const holes = this.parts.map((p) => ({ pts: fmt(p.pts) }));
+    const cutStrokes = strokes.filter((s) => s.cut);
+    const innerOf = (part) => {
+      let d = '';
+      cutStrokes.forEach((s) => {
+        const pts = s.pts, step = Math.max(1, Math.floor(pts.length / 16));
+        let n = 0, inside = 0;
+        for (let k = 0; k < pts.length; k += step) { n++; if (!this.nearEdge(pts[k], part.pts) && this.inPoly(pts[k], part.pts)) inside++; }
+        if (n && inside > n / 2) d += 'M' + pts.map((p) => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L');
+      });
+      return d;
+    };
+    const pieceList = this.parts.map((p) => ({ pts: fmt(p.pts), inner: innerOf(p) }));
+    const now = this.now;
+    const smoke = this.smoke.map((p) => {
+      const k = Math.min(1, (now - p.born) / p.life), e = k * k;
+      const x = p.x0 + (this.VENT[0] - p.x0) * e + Math.sin(k * 9 + p.w) * 5 * (1 - k);
+      const y = p.y0 + (this.VENT[1] - p.y0) * e - 8 * Math.sin(k * 3.14);
+      const op = 0.42 * (1 - k) * Math.min(1, k * 8);
+      return { x: x.toFixed(1), y: y.toFixed(1), r: (2.5 + 8 * Math.sin(k * 2.2)).toFixed(1), style: 'fill:rgba(214,208,196,' + op.toFixed(3) + ')' };
+    });
+    let ringX = -50, ringY = -50, ring = 'fill:none;opacity:0';
+    if (cur && cur.length > 3) {
+      const l = cur[cur.length - 1];
+      const near = Math.hypot(cur[0][0] - l[0], cur[0][1] - l[1]) < 22 && cur.length >= 6;
+      ringX = cur[0][0].toFixed(1); ringY = cur[0][1].toFixed(1);
+      ring = 'fill:none;stroke:' + accent + ';stroke-width:1.4;' + (near ? 'opacity:1' : 'stroke-dasharray:3 3;opacity:.6');
+    }
+    const mm = (v) => (v * 300 / 350).toFixed(1).padStart(5, '0');
+    const n = uncut.length;
+    let status, hint;
+    if (phase === 'intro') { status = 'READY'; hint = 'tap the sheet to play'; }
+    else if (phase === 'wait' || phase === 'swiping') { status = 'NEW SHEET'; hint = 'loading a fresh sheet…'; }
+    else if (phase === 'cutting') { status = laserOn ? 'LASER ON' : 'MOVING'; hint = 'cutting… ' + Math.round(el / this.total * 100) + '%'; }
+    else {
+      status = n ? n + (n === 1 ? ' PATH READY' : ' PATHS READY') : 'IDLE';
+      if (n) hint = 'add more lines, or press Cut';
+      else if (this.lastJob) { const pc = this.parts.length - this.lastJob.start; hint = 'cut ' + this.lastJob.paths + (this.lastJob.paths === 1 ? ' path' : ' paths') + ' · ' + pc + (pc === 1 ? ' part' : ' parts') + ' dropped · ' + this.lastJob.mm + ' mm of kerf'; }
+      else hint = 'draw lines and arcs, enclose an area to cut out a part, then press Cut';
+    }
+    return {
+      accent, planned, sketch, nodes, kerf, holes, pieces: introDropped ? pieceList.slice(1) : pieceList, introStatic, introDrop,
+      introPts: this.introMode && strokes.length ? fmt(strokes[0].pts) : '',
+      sheetT: 'translate(' + dx.toFixed(1) + ',0)', smoke, ring, ringX, ringY, status, hint,
+      hexD: this.hexD,
+      nodeStyle: 'fill:#C79A5B;stroke:#262422;stroke-width:1',
+      statusColor: laserOn ? '#B4593A' : '#5F5A52',
+      readout: 'X ' + mm(head[0]) + '  Y ' + mm(head[1]),
+      headT: 'translate(' + head[0].toFixed(1) + ',' + head[1].toFixed(1) + ')',
+      beamY: (head[1] - 5).toFixed(1),
+      glow: 'fill:' + accent + ';opacity:' + (laserOn ? 0.35 : 0),
+      dot: 'fill:' + (laserOn ? accent : '#4A4740'),
+      noCut: !n || phase !== 'draw',
+      noClear: phase !== 'draw' || (!strokes.length && !cur),
+      down: (e) => this.onDown(e),
+      move: (e) => this.onMove(e),
+      up: () => this.onUp(),
+      cut: () => this.onCut(),
+      clear: () => this.onClear()
+    };
+  }
+}
+const bedTpl = v=>`
+<defs>
+<mask id="sheetHoles" maskUnits="userSpaceOnUse" x="0" y="0" width="350" height="300">
+<rect x="0" y="0" width="350" height="300" fill="#fff"></rect>
+${(v.holes||[]).map((h)=>`
+<polygon points="${h.pts}" fill="#000"></polygon>
+`).join("")}
+</mask>
+</defs>
+<path d="${v.hexD}" style="fill: none; stroke: #3A3733; stroke-width: 1.1"></path>
+<rect x="135" y="1" width="80" height="12" rx="2" fill="#0A0A09"></rect>
+<rect x="141" y="4" width="68" height="1.5" fill="#33312D"></rect>
+<rect x="141" y="7" width="68" height="1.5" fill="#33312D"></rect>
+<rect x="141" y="10" width="68" height="1.5" fill="#33312D"></rect>
+<g transform="${v.sheetT}">
+<rect x="12" y="16" width="326" height="272" rx="2" fill="#C79A5B" mask="url(#sheetHoles)"></rect>
+<rect x="12" y="16" width="326" height="272" rx="2" fill="none" mask="url(#sheetHoles)" style="stroke: rgba(38, 36, 34, 0.25); stroke-width: 1"></rect>
+${(v.introStatic||[]).map((i)=>`
+<g style="pointer-events: none">
+<text x="175" y="144" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.06em; fill: #262422; text-anchor: middle">LASER CUTTERS</text>
+<text x="175" y="174" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.06em; fill: #262422; text-anchor: middle">ARE NOT A GAME!</text>
+<text x="175" y="204" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; fill: #262422; text-anchor: middle">▶ tap the sheet to play</text>
+</g>
+`).join("")}
+${(v.planned||[]).map((l)=>`
+<polyline points="${l.pts}" style="fill: none; stroke: #262422; stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9"></polyline>
+`).join("")}
+${(v.sketch||[]).map((l)=>`
+<polyline points="${l.pts}" style="fill: none; stroke: #262422; stroke-width: 1; stroke-dasharray: 2 3; stroke-linecap: round; opacity: 0.55"></polyline>
+`).join("")}
+${(v.nodes||[]).map((n)=>`
+<rect x="${n.x}" y="${n.y}" width="5" height="5" style="${v.nodeStyle}"></rect>
+`).join("")}
+<g mask="url(#sheetHoles)">${(v.kerf||[]).map((l)=>`
+<polyline points="${l.pts}" style="fill: none; stroke: rgba(92, 52, 20, 0.35); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round"></polyline>
+<polyline points="${l.pts}" style="fill: none; stroke: #262422; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"></polyline>
+`).join("")}</g>
+${(v.pieces||[]).map((p)=>`
+<g class="drop"><polygon points="${p.pts}" fill="#C79A5B" style="stroke: #262422; stroke-width: 1.8; stroke-linejoin: round"></polygon><path d="${p.inner}" style="fill: none; stroke: #262422; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round"></path></g>
+`).join("")}
+${(v.introDrop||[]).map((i)=>`
+<g class="drop" style="pointer-events: none">
+<polygon points="${v.introPts}" fill="#C79A5B" style="stroke: #262422; stroke-width: 1.8; stroke-linejoin: round"></polygon>
+<text x="175" y="144" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.06em; fill: #262422; text-anchor: middle">LASER CUTTERS</text>
+<text x="175" y="174" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 24px; letter-spacing: 0.06em; fill: #262422; text-anchor: middle">ARE NOT A GAME!</text>
+<text x="175" y="204" style="font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; fill: #262422; text-anchor: middle">▶ tap the sheet to play</text>
+</g>
+`).join("")}
+<circle cx="${v.ringX}" cy="${v.ringY}" r="9" style="${v.ring}"></circle>
+</g>
+<rect x="0" y="0" width="7" height="300" fill="#2E2D2A"></rect>
+<rect x="343" y="0" width="7" height="300" fill="#2E2D2A"></rect>
+<rect x="0" y="${v.beamY}" width="350" height="10" rx="1" fill="#3E3D39"></rect>
+<rect x="0" y="${v.beamY}" width="350" height="2" fill="#5A5852"></rect>
+<g transform="${v.headT}">
+<circle cx="0" cy="0" r="12" style="${v.glow}"></circle>
+<rect x="-11" y="-14" width="22" height="26" rx="3" fill="#D6CFBF"></rect>
+<rect x="-7" y="-10" width="14" height="6" rx="1" fill="#8D877A"></rect>
+<circle cx="0" cy="5" r="3" style="${v.dot}"></circle>
+</g>
+${(v.smoke||[]).map((m)=>`
+<circle cx="${m.x}" cy="${m.y}" r="${m.r}" style="${m.style}"></circle>
+`).join("")}
+`;
+const c = new Component({});
+const $ = (id) => document.getElementById(id);
+let rendering = false;
+function render() {
+  if (rendering) return; rendering = true;
+  try {
+    const v = c.renderVals();
+    $('bed').innerHTML = bedTpl(v);
+    $('readout').textContent = v.readout;
+    $('status').textContent = v.status; $('status').style.color = v.statusColor;
+    $('hint').textContent = v.hint || '';
+    $('cut').disabled = !!v.noCut; $('cut').style.background = v.accent;
+    $('clear').disabled = !!v.noClear;
+  } finally { rendering = false; }
+}
+const bed = $('bed');
+bed.addEventListener('pointerdown', (e) => c.onDown(e));
+bed.addEventListener('pointermove', (e) => c.onMove(e));
+bed.addEventListener('pointerup', () => c.onUp());
+bed.addEventListener('pointercancel', () => c.onUp());
+$('cut').addEventListener('click', () => c.onCut());
+$('clear').addEventListener('click', () => c.onClear());
+render();
+</script>
+</body>
+</html>
