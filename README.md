@@ -1,5 +1,5 @@
 # studioya.github.io
-Yarden Amir — job hunt flyer and portfolio PDFs
+Yarden Amir — portfolio PDFs. The flyer lives at https://flyer.yardenamir.com
 
 - [Lasers × ceramics: research to objects](https://studioya.github.io/pdf/lasers-ceramics.pdf)
 - [Parametric objects](https://studioya.github.io/pdf/parametric-objects.pdf)
